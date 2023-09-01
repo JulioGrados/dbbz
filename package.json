@@ -1,0 +1,30 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "description": "Base de Datos de bizeus",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://julio_giampiere_grados@bitbucket.org/devcodela/dbbz.git"
+  },
+  "author": "bizeus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/devcodela/dbbz/issues"
+  },
+  "homepage": "https://bitbucket.org/devcodela/dbbz#readme",
+  "dependencies": {
+    "defaults": "^1.0.3",
+    "moment-timezone": "^0.5.27",
+    "mongoose": "^5.8.9",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "mongoose-timestamp": "^0.6.0",
+    "utils": "file:../utilsbz"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^6.3.3"
+  }
+}
