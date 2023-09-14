@@ -29,7 +29,7 @@ module.exports = config => {
   if (env === 'test') {
     uri = `mongodb://${host}/bizeustest`
   } else if (env === 'prod') {
-    uri = `mongodb://${username}:${password}@${host}/${database}`
+    uri = `mongodb+srv://${username}:${password}@${host}/${database}`
   }
 
   let mongoServer
