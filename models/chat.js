@@ -26,6 +26,9 @@ const ChatSchema = new Schema(
     lastChannel: {
       type: String
     },
+    lastMessageType: {
+      type: String
+    },
     date: {
       type: Date,
       default: Date.now

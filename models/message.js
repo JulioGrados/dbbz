@@ -21,7 +21,14 @@ const MessageSchema = new Schema(
     senderId: {
       type: String
     },
+    typeMsg: {
+      type: String,
+      enum: ['text', 'image']
+    },
     text: {
+      type: String
+    },
+    image: {
       type: String
     },
     wamid: {
