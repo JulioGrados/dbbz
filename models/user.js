@@ -120,21 +120,14 @@ const UserSchema = new Schema(
         }
       }
     ],
-    roles: [
-      {
-        type: String,
-        enum: [
-          'Docente',
-          'Administrador',
-          'Interesado',
-          'Estudiante',
-          'Cliente',
-          'Asesor',
-          'Tesorero',
-          'Recepcionista'
-        ]
-      }
-    ],
+    rol: {
+      type: String,
+      enum: [
+        'Admin',
+        'User',
+        'Contact'
+      ]
+    },
     moodleId: {
       type: Number,
       unique: 'Ya existe un usuario con el mismo moodleId.',
