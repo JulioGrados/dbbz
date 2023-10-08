@@ -32,6 +32,13 @@ const ChatSchema = new Schema(
     phoneNoId: {
       type: String
     },
+    auto: {
+      type: Boolean,
+      default: false
+    },
+    country: {
+      type: String
+    },
     date: {
       type: Date,
       default: Date.now
