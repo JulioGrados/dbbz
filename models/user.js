@@ -239,7 +239,24 @@ const UserSchema = new Schema(
     position: {
       type: Boolean,
       default: false
-    }
+    },
+    upload: [
+      {
+        file: {
+          type: String
+        },
+        name: {
+          type: String
+        },
+        date: {
+          type: Date
+        },
+        type: {
+          type: String,
+          enum: ['pdf', 'doc', 'csv']
+        }
+      }
+    ] 
   },
   {
     collection: 'users'

@@ -15,7 +15,9 @@ const ChatSchema = new Schema(
       ref: 'User'
     },
     mobile: {
-      type: String
+      type: Number,
+      unique: 'Ya existe una cuenta que tiene el mismo número de celular.',
+      sparse: true
     },
     mobileCode: {
       type: String
