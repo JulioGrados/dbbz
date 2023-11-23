@@ -9,8 +9,9 @@ const UserSchema = new Schema(
   {
     username: {
       type: String,
+      lowercase: true,
+      sparse: true,
       unique: 'Ya existe un usuario con el mismo username.',
-      sparse: true
     },
     names: {
       type: String,
@@ -31,15 +32,6 @@ const UserSchema = new Schema(
     mobileCode: {
       default: 51,
       type: Number
-    },
-    firstNameCert: {
-      type: String
-    },
-    lastNameCert: {
-      type: String
-    },
-    beforeName: {
-      type: String
     },
     firstName: {
       type: String
@@ -69,57 +61,12 @@ const UserSchema = new Schema(
     country: {
       type: String
     },
-    training: {
-      type: String
-    },
-    relationship: {
-      type: String
-    },
     photo: {
       type: String
-    },
-    description: {
-      type: String
-    },
-    address: {
-      type: String
-    },
-    senderId: {
-      type: String
-    },
-    call: {
-      annexed: {
-        type: String
-      },
-      token: {
-        type: String
-      }
-    },
-    zadarma: {
-      annexed: {
-        type: String
-      },
-      token: {
-        type: String
-      }
-    },
-    isZadarma: {
-      type: Boolean,
-      default: false
     },
     tokenRecover: {
       type: String
     },
-    academicLevel: [
-      {
-        profession: {
-          type: String
-        },
-        degree: {
-          type: String
-        }
-      }
-    ],
     rol: {
       type: String,
       enum: [
@@ -128,135 +75,9 @@ const UserSchema = new Schema(
         'Contact'
       ]
     },
-    moodleId: {
-      type: Number,
-      unique: 'Ya existe un usuario con el mismo moodleId.',
-      sparse: true
-    },
-    reasign: {
-      username: {
-        type: String
-      },
-      ref: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    },
-    shippings: [
-      {
-        moodleId: {
-          type: Number
-        },
-        firstName: {
-          type: String
-        },
-        lastName: {
-          type: String
-        },
-        dni: {
-          type: String
-        },
-        cellphone: {
-          type: String
-        },
-        date: {
-          type: Number
-        },
-        address: {
-          type: String
-        },
-        priority: {
-          type: String,
-          default: 'Principal',
-          enum: ['Principal', 'Secundario']
-        },
-        course: {
-          name: {
-            type: String
-          },
-          moodleId: {
-            type: Number
-          },
-          ref: {
-            type: Schema.Types.ObjectId,
-            ref: 'Course'
-          }
-        }
-      }
-    ],
-    extras: [
-      {
-        type: {
-          type: String,
-          default: 'mobile',
-          enum: ['mobile', 'email']
-        },
-        value: {
-          type: String
-        },
-        code: {
-          type: String
-        },
-        use: {
-          type: String,
-          default: 'Personal',
-          enum: ['Personal', 'Whatsapp','Trabajo', 'Casa', 'Anulado', 'Otro']
-        }
-      }
-    ],
-    sellCourses: [
-      {
-        name: {
-          type: String
-        },
-        price: {
-          type: Number
-        },
-        ref: {
-          type: Schema.Types.ObjectId,
-          ref: 'Course'
-        }
-      }
-    ],
-    prospects: {
-      type: Number,
-      default: 0
-    },
     phoneNoId: {
       type: String
-    },
-    orden: {
-      type: Number
-    },
-    status: {
-      type: Boolean,
-      default: false
-    },
-    stage: {
-      type: Boolean,
-      default: false
-    },
-    position: {
-      type: Boolean,
-      default: false
-    },
-    upload: [
-      {
-        file: {
-          type: String
-        },
-        name: {
-          type: String
-        },
-        date: {
-          type: Date
-        },
-        type: {
-          type: String,
-          enum: ['pdf', 'doc', 'csv']
-        }
-      }
-    ] 
+    }
   },
   {
     collection: 'users'
@@ -273,9 +94,7 @@ UserSchema.plugin(mongooseBeautifulUniqueValidation)
 UserSchema.index({
   username: 1,
   email: 1,
-  names: 1,
-  orden: 1,
-  'extra.value': 1
+  names: 1
 })
 
 module.exports = mongoose.model('User', UserSchema)
