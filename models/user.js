@@ -25,7 +25,7 @@ const UserSchema = new Schema(
       sparse: true
     },
     mobile: {
-      type: Number,
+      type: String,
       unique: 'Ya existe una cuenta que tiene el mismo número de celular.',
       sparse: true
     },
@@ -75,8 +75,22 @@ const UserSchema = new Schema(
         'Contact'
       ]
     },
+    rolCompany: {
+      type: String,
+      enum: [
+        'Gerente',
+        'C-Level',
+        'Jefatura',
+        'Líder de Equipo',
+        'Colaborador'
+      ]
+    },
     phoneNoId: {
       type: String
+    },
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
     }
   },
   {

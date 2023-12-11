@@ -3,7 +3,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const timestamps = require('mongoose-timestamp')
-const autoIncrement = require('mongoose-auto-increment')
 const mongooseBeautifulUniqueValidation = require('mongoose-beautiful-unique-validation')
 
 const CompanySchema = new Schema(
@@ -23,9 +22,14 @@ const CompanySchema = new Schema(
     range: {
       type: String
     },
-    goals: {
+    product: {
       type: String
     },
+    goals: [
+      {
+        type: String
+      }
+    ],
     users: [
       {
         type: Schema.Types.ObjectId,
@@ -34,7 +38,13 @@ const CompanySchema = new Schema(
     ],
     companyId: {
       type: Number
-    }
+    },
+    connections: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Connection'
+      }
+    ]
   },
   {
     collection: 'companies'
@@ -45,13 +55,6 @@ CompanySchema.plugin(timestamps, {
   createdAt: { index: true },
   updatedAt: { index: true }
 })
-
-CompanySchema.plugin(autoIncrement.plugin, {
-    model: 'Company',
-    field: 'companyId',
-    startAt: 100000,
-    incrementBy: 1
-});
 
 CompanySchema.plugin(mongooseBeautifulUniqueValidation)
 

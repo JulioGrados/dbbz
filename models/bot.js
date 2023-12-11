@@ -19,8 +19,7 @@ const BotSchema = new Schema(
     name: {
       type: String,
       sparse: true,
-      lowercase: true,
-      required: [true, 'Debes agregar tus nombres.']
+      lowercase: true
     },
     supplier: {
       type: String
@@ -37,7 +36,17 @@ const BotSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Upload'
       }
-    ]
+    ],
+    connections: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Connection'
+      }
+    ],
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
+    }
   },
   {
     collection: 'bots'

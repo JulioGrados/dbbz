@@ -23,6 +23,10 @@ const UploadSchema = new Schema(
     phoneNoId: {
       type: String
     },
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
+    },
     linked: {
       type: Schema.Types.ObjectId,
       ref: 'User'
