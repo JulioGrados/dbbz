@@ -10,6 +10,12 @@ const ConnectionSchema = new Schema(
     name: {
       type: String
     },
+    phoneNoId: {
+      type: String
+    },
+    key: {
+      type: String
+    },
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company'

@@ -48,7 +48,11 @@ const ChatSchema = new Schema(
     channel: {
       type: String,
       default: 'Whatsapp'
-    }
+    },
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
+    },
   },
   {
     collection: 'chats'

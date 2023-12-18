@@ -38,6 +38,9 @@ const UploadSchema = new Schema(
     mood: {
       type: String,
       enum: ['csv', 'pdf', 'doc', 'input']
+    },
+    countDbv: {
+      type: Number
     }
   },
   {

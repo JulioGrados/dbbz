@@ -23,12 +23,18 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image']
+      enum: ['text', 'image', 'video', 'document']
     },
     text: {
       type: String
     },
     image: {
+      type: String
+    },
+    url: {
+      type: String
+    },
+    name: {
       type: String
     },
     wamid: {
@@ -48,6 +54,10 @@ const MessageSchema = new Schema(
     channel: {
       type: String,
       default: 'Whatsapp'
+    },
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
     }
   },
   {
