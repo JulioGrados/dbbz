@@ -13,6 +13,9 @@ const ConnectionSchema = new Schema(
     phoneNoId: {
       type: String
     },
+    idInstance: {
+      type: Number
+    },
     key: {
       type: String
     },

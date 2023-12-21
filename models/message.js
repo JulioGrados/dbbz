@@ -25,6 +25,12 @@ const MessageSchema = new Schema(
       type: String,
       enum: ['text', 'image', 'video', 'document']
     },
+    chatId: {
+      type: String
+    },
+    idMessage: {
+      type: String
+    },
     text: {
       type: String
     },
