@@ -8,16 +8,14 @@ const ChatSchema = new Schema(
   {
     linked: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'Contact'
     },
     assigned: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
     mobile: {
-      type: String,
-      unique: 'Ya existe una cuenta que tiene el mismo número de celular.',
-      sparse: true
+      type: String
     },
     mobileCode: {
       type: String
@@ -53,6 +51,18 @@ const ChatSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Company'
     },
+    connection: {
+      type: Schema.Types.ObjectId,
+      ref: 'Connection'
+    },
+    name: {
+      type: String,
+      enum: [
+        'whatsapp-cloud-api',
+        'whatsapp-qr',
+        'instagram'
+      ]
+    }
   },
   {
     collection: 'chats'

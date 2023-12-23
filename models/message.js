@@ -12,7 +12,7 @@ const MessageSchema = new Schema(
     },
     linked: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'Contact'
     },
     chat: {
       type: Schema.Types.ObjectId,
@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted']
     },
     chatId: {
       type: String
@@ -42,6 +42,10 @@ const MessageSchema = new Schema(
     },
     name: {
       type: String
+    },
+    transmitter: {
+      type: Boolean,
+      default: false
     },
     wamid: {
       type: String
@@ -64,6 +68,10 @@ const MessageSchema = new Schema(
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company'
+    },
+    connection: {
+      type: Schema.Types.ObjectId,
+      ref: 'Connection'
     }
   },
   {

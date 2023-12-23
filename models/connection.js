@@ -8,7 +8,12 @@ const mongooseBeautifulUniqueValidation = require('mongoose-beautiful-unique-val
 const ConnectionSchema = new Schema(
   {
     name: {
-      type: String
+      type: String,
+      enum: [
+        'whatsapp-cloud-api',
+        'whatsapp-qr',
+        'instagram'
+      ]
     },
     phoneNoId: {
       type: String
