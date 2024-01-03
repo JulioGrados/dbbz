@@ -69,10 +69,6 @@ const ContactSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Company'
     },
-    contact: {
-      type: Schema.Types.ObjectId,
-      ref: 'Contact'
-    },
     linked: {
       type: Schema.Types.ObjectId,
       ref: 'User'
