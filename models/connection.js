@@ -31,6 +31,13 @@ const ConnectionSchema = new Schema(
     chatbot: {
       type: Schema.Types.ObjectId,
       ref: 'Bot'
+    },
+    isReady: {
+      type: Boolean,
+      default: false
+    },
+    status: {
+      type: String
     }
   },
   {
