@@ -37,6 +37,10 @@ const ConnectionSchema = new Schema(
       default: false
     },
     status: {
+      type: String,
+      default: 'notAuthorized'
+    },
+    mobile: {
       type: String
     }
   },
