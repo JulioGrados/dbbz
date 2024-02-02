@@ -59,7 +59,8 @@ const MessageSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ['received', 'sent', 'delivered', 'read']
+      enum: ['received', 'sent', 'delivered', 'read'],
+      default: 'received'
     },
     channel: {
       type: String,

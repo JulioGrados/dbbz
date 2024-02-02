@@ -29,6 +29,11 @@ const ChatSchema = new Schema(
     lastMessageType: {
       type: String
     },
+    lastMessageStatus: {
+      type: String,
+      enum: ['received', 'sent', 'delivered', 'read'],
+      default: 'received'
+    },
     phoneNoId: {
       type: String
     },
