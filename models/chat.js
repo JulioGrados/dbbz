@@ -67,6 +67,14 @@ const ChatSchema = new Schema(
         'whatsapp-qr',
         'instagram'
       ]
+    },
+    option: {
+      type: String,
+      enum: [
+        'abiertos',
+        'resueltos'
+      ],
+      default: 'abiertos'
     }
   },
   {

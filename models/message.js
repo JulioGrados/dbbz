@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note']
     },
     chatId: {
       type: String
