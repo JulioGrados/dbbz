@@ -34,6 +34,14 @@ const ChatSchema = new Schema(
       enum: ['received', 'sent', 'delivered', 'read'],
       default: 'received'
     },
+    read: {
+      type: Boolean,
+      default: false
+    },
+    count: {
+      type: Number,
+      default: 0
+    },
     phoneNoId: {
       type: String
     },
