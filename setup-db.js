@@ -28,6 +28,7 @@ module.exports = config => {
 
   if (env === 'test') {
     uri = `mongodb://${host}/bizeustest`
+    // uri = `mongodb://localhost:27017/bizeus`
   } else if (env === 'prod') {
     uri = `mongodb+srv://${username}:${password}@${host}/${database}`
   }
