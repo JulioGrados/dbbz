@@ -53,6 +53,10 @@ const MessageSchema = new Schema(
     phoneNoId: {
       type: String
     },
+    isDelete: {
+      type: Boolean,
+      default: false
+    },
     date: {
       type: Date,
       default: Date.now
