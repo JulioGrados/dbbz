@@ -72,6 +72,10 @@ const ChatSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Bot'
     },
+    team: {
+      type: Schema.Types.ObjectId,
+      ref: 'Team'
+    },
     name: {
       type: String,
       enum: [

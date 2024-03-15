@@ -42,6 +42,10 @@ const ConnectionSchema = new Schema(
     },
     mobile: {
       type: String
+    },
+    team: {
+      type: Schema.Types.ObjectId,
+      ref: 'Team'
     }
   },
   {

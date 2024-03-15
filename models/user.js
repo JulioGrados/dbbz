@@ -95,6 +95,10 @@ const UserSchema = new Schema(
     seeAll: {
       type: Boolean,
       default: true
+    },
+    team:{
+      type: Schema.Types.ObjectId,
+      ref: 'Team'
     }
   },
   {
