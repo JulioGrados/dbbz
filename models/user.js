@@ -91,6 +91,10 @@ const UserSchema = new Schema(
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company'
+    },
+    seeAll: {
+      type: Boolean,
+      default: true
     }
   },
   {
