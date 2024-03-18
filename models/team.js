@@ -27,6 +27,10 @@ const TeamSchema = new Schema(
           type: Boolean,
           default: false
         },
+        position: {
+          type: Boolean,
+          default: false
+        },
         ref: {
           type: Schema.Types.ObjectId,
           ref: 'User'

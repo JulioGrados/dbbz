@@ -96,10 +96,12 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true
     },
-    team:{
-      type: Schema.Types.ObjectId,
-      ref: 'Team'
-    }
+    teams: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Team'
+      }
+    ]
   },
   {
     collection: 'users'
