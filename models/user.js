@@ -96,6 +96,10 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true
     },
+    isSend: {
+      type: Boolean,
+      default: false
+    },
     teams: [
       {
         type: Schema.Types.ObjectId,
