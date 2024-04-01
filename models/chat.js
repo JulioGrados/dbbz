@@ -17,6 +17,9 @@ const ChatSchema = new Schema(
     mobile: {
       type: String
     },
+    names: {
+      type: String
+    },
     mobileCode: {
       type: String
     },
