@@ -72,6 +72,10 @@ const ContactSchema = new Schema(
     linked: {
       type: Schema.Types.ObjectId,
       ref: 'User'
+    },
+    connection: {
+      type: Schema.Types.ObjectId,
+      ref: 'Connection'
     }
   },
   {
