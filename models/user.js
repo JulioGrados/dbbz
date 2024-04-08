@@ -105,7 +105,16 @@ const UserSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Team'
       }
-    ]
+    ],
+    notification: {
+      number: {
+        type: Number
+      },
+      read: {
+        type: Boolean,
+        default: true
+      }
+    }
   },
   {
     collection: 'users'
