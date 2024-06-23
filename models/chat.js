@@ -91,9 +91,19 @@ const ChatSchema = new Schema(
       type: String,
       enum: [
         'abiertos',
-        'resueltos'
+        'resueltos',
+        'espera',
+        'outside'
       ],
       default: 'abiertos'
+    },
+    status: {
+      type: String,
+      enum: [
+        'initial',
+        'assigned',
+        'notAssigned'
+      ]
     }
   },
   {

@@ -40,13 +40,18 @@ const ConnectionSchema = new Schema(
       type: String,
       default: 'notAuthorized'
     },
+    greetingMsg: {
+      type: String
+    },
     mobile: {
       type: String
     },
-    team: {
-      type: Schema.Types.ObjectId,
-      ref: 'Team'
-    }
+    teams: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Team'
+      }
+    ]
   },
   {
     collection: 'connections'

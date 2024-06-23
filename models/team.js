@@ -21,6 +21,9 @@ const TeamSchema = new Schema(
       type: Boolean,
       default: true
     },
+    greetingMsg: {
+      type: String
+    },
     users: [
       {
         auto: {
