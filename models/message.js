@@ -23,8 +23,18 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray']
     },
+    contacts: [
+      {
+        mobile: {
+          type: String
+        },
+        names: {
+          type: String
+        }
+      }
+    ],
     chatId: {
       type: String
     },
