@@ -51,7 +51,10 @@ const ConnectionSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Team'
       }
-    ]
+    ],
+    webhook: {
+      type: String
+    }
   },
   {
     collection: 'connections'
