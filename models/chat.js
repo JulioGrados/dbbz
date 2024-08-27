@@ -26,6 +26,12 @@ const ChatSchema = new Schema(
     lastMessage: {
       type: String
     },
+    previousMessage: {
+      type: String
+    },
+    previousMessageType: {
+      type: String
+    },
     lastChannel: {
       type: String
     },

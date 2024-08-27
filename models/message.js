@@ -87,6 +87,9 @@ const MessageSchema = new Schema(
     connection: {
       type: Schema.Types.ObjectId,
       ref: 'Connection'
+    },
+    reaction: {
+      type: String
     }
   },
   {
