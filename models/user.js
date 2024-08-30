@@ -114,6 +114,10 @@ const UserSchema = new Schema(
         type: Boolean,
         default: true
       }
+    },
+    language: {
+      type: String,
+      default: 'Español'
     }
   },
   {
