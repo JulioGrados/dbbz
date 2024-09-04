@@ -35,6 +35,46 @@ const MessageSchema = new Schema(
         }
       }
     ],
+    quoted: {
+      id: {
+        type: String
+      },
+      text: {
+        type: String
+      },
+      transmitter: {
+        type: String
+      },
+      typeMsg: {
+        type: String
+      },
+      url: {
+        type: String
+      },
+      caption: {
+        type: String
+      },
+      name: {
+        type: String
+      },
+      contacts: [
+        {
+          mobile: {
+            type: String
+          },
+          names: {
+            type: String
+          }
+        }
+      ]
+    },
+    quotedText: {
+      type: String
+    },
+    messageQuoted: {
+      type: Schema.Types.ObjectId,
+      ref: 'Message'
+    },
     chatId: {
       type: String
     },
