@@ -12,7 +12,8 @@ const ConnectionSchema = new Schema(
       enum: [
         'whatsapp-cloud-api',
         'whatsapp-qr',
-        'instagram'
+        'instagram',
+        'facebook-messenger'
       ]
     },
     phoneNoId: {
