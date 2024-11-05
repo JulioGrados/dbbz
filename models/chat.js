@@ -110,7 +110,13 @@ const ChatSchema = new Schema(
         'assigned',
         'notAssigned'
       ]
-    }
+    },
+    tags: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag'
+      }
+    ]
   },
   {
     collection: 'chats'
