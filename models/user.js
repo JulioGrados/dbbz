@@ -118,6 +118,10 @@ const UserSchema = new Schema(
     language: {
       type: String,
       default: 'Español'
+    },
+    noti: {
+      type: Boolean,
+      default: true
     }
   },
   {
