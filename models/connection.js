@@ -55,7 +55,19 @@ const ConnectionSchema = new Schema(
     ],
     webhook: {
       type: String
-    }
+    },
+    facebookUserId: {
+      type: String
+    },
+    facebookUserToken: {
+      type: String
+    },
+    facebookPageUserId: {
+      type: String
+    },
+    tokenMeta: {
+      type: String
+    },
   },
   {
     collection: 'connections'
