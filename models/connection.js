@@ -9,12 +9,9 @@ const ConnectionSchema = new Schema(
   {
     name: {
       type: String,
-      enum: [
-        'whatsapp-cloud-api',
-        'whatsapp-qr',
-        'instagram',
-        'facebook-messenger'
-      ]
+    },
+    channel: {
+      type: String
     },
     phoneNoId: {
       type: String
