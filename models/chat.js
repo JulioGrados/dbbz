@@ -87,11 +87,6 @@ const ChatSchema = new Schema(
     },
     name: {
       type: String,
-      enum: [
-        'whatsapp-cloud-api',
-        'whatsapp-qr',
-        'instagram'
-      ]
     },
     option: {
       type: String,
