@@ -94,7 +94,7 @@ const ChatSchema = new Schema(
     },
     transmitter: {
       type: Boolean,
-      default: false
+      default: true
     },
     option: {
       type: String,
