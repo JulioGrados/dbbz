@@ -92,6 +92,10 @@ const ChatSchema = new Schema(
     name: {
       type: String,
     },
+    transmitter: {
+      type: Boolean,
+      default: false
+    },
     option: {
       type: String,
       enum: [
