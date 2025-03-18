@@ -9,7 +9,8 @@ const TrackSchema = new Schema(
   {
     typeMsg: {
         type: String,
-        enum: ['create', 'resolved']
+        enum: ['create', 'resolved'],
+        default: 'create'
     },
     assigned: {
         type: Schema.Types.ObjectId,
