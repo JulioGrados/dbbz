@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location']
     },
     contacts: [
       {
@@ -79,6 +79,12 @@ const MessageSchema = new Schema(
       type: String
     },
     idMessage: {
+      type: String
+    },
+    latitude: {
+      type: String
+    },
+    longitude: {
       type: String
     },
     text: {
