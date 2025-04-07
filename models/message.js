@@ -57,6 +57,12 @@ const MessageSchema = new Schema(
       name: {
         type: String
       },
+      latitude: {
+        type: String
+      },
+      longitude: {
+        type: String
+      },
       contacts: [
         {
           mobile: {
