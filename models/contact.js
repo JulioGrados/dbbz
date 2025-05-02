@@ -76,7 +76,13 @@ const ContactSchema = new Schema(
     connection: {
       type: Schema.Types.ObjectId,
       ref: 'Connection'
-    }
+    },
+    tags: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag'
+      }
+    ]
   },
   {
     collection: 'contacts'
