@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'edit']
     },
     contacts: [
       {
@@ -116,6 +116,10 @@ const MessageSchema = new Schema(
       type: String
     },
     isDelete: {
+      type: Boolean,
+      default: false
+    },
+    isEdit: {
       type: Boolean,
       default: false
     },
