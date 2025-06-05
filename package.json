@@ -22,7 +22,7 @@
     "mongoose": "^5.8.9",
     "mongoose-beautiful-unique-validation": "^7.1.1",
     "mongoose-timestamp": "^0.6.0",
-    "utils": "https://AbelBizeus:ATBB65zG5Yxc5tPLarZ72VSf6TgL6A27B87A@bitbucket.org/devcodela/utilsbz.git"
+    "utils": "https://jgrados0708:ATBBy74FEaNpBmU7JZTSQSwWcx64A9D8C35E@bitbucket.org/bizeus/utilsbz.git"
   },
   "devDependencies": {
     "mongodb-memory-server": "^6.3.3"
