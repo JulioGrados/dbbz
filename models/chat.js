@@ -40,7 +40,7 @@ const ChatSchema = new Schema(
     },
     lastMessageStatus: {
       type: String,
-      enum: ['received', 'sent', 'delivered', 'read'],
+      enum: ['received', 'sent', 'delivered', 'read', 'error'],
       default: 'received'
     },
     read: {
