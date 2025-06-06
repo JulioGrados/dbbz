@@ -126,6 +126,9 @@ const MessageSchema = new Schema(
     idEdit: {
       type: String,
     },
+    textEdit: {
+      type: String,
+    },
     date: {
       type: Date,
       default: Date.now
