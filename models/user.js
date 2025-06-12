@@ -26,8 +26,8 @@ const UserSchema = new Schema(
     },
     mobile: {
       type: String,
-      unique: 'Ya existe una cuenta que tiene el mismo número de celular.',
-      sparse: true
+      // unique: 'Ya existe una cuenta que tiene el mismo número de celular.',
+      // sparse: true
     },
     mobileCode: {
       default: 51,
