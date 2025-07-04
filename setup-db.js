@@ -1,20 +1,28 @@
 'use strict'
-
 const mongoose = require('mongoose')
-const { MongoMemoryServer } = require('mongodb-memory-server')
+
 const defaults = require('defaults')
+const config = require('config')
 
 let db = null
 
+let host
+if (config.mongo.env === 'production') {
+  host = config.mongo.productionUrl
+} else {
+  host = config.mongo.localUrl
+}
+
+
 module.exports = config => {
   config = defaults(config, {
-    host: 'localhost',
+    host: host,
     database: 'bizeus',
     env: 'dev'
   })
-
-  const { uri = 'mongodb://localhost', env, database } = config
-
+  
+  const { uri = `mongodb://${host}`, env, database } = config
+  console.log('uri', uri)
   const opt = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -28,7 +36,7 @@ module.exports = config => {
 
   let mongoServer
 
-  const connect = async () => {
+  const connect = async (env) => {
     console.log('connect')
     if (db) {
       return db
@@ -36,16 +44,19 @@ module.exports = config => {
     console.log('db initial', db)
     try {
       if (env === 'test') {
-        mongoServer = new MongoMemoryServer()
-        const mongoUri = await mongoServer.getUri()
+        console.log('1')
+        const { MongoMemoryServer } = require('mongodb-memory-server')
+        mongoServer = await MongoMemoryServer.create(); 
+        const mongoUri = mongoServer.getUri();
         db = await mongoose.connect(mongoUri, opt)
         return db
       }
+      console.log('2')
       db = await mongoose.connect(uri, opt)
     } catch (error) {
       const errorMenssage = {
         status: 500,
-        menssage: 'Error de conexión con la base de datos',
+        menssage: 'Error de conexiï¿½n con la base de datos',
         error
       }
       throw errorMenssage
