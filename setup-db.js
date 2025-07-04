@@ -1,28 +1,20 @@
 'use strict'
-const mongoose = require('mongoose')
 
+const mongoose = require('mongoose')
+const { MongoMemoryServer } = require('mongodb-memory-server')
 const defaults = require('defaults')
-const config = require('config')
 
 let db = null
 
-let host
-if (config.mongo.env === 'production') {
-  host = config.mongo.productionUrl
-} else {
-  host = config.mongo.localUrl
-}
-
-
 module.exports = config => {
   config = defaults(config, {
-    host: host,
+    host: 'localhost',
     database: 'bizeus',
     env: 'dev'
   })
-  
-  const { uri = `mongodb://${host}`, env, database } = config
-  console.log('uri', uri)
+
+  const { uri = 'mongodb://localhost', env, database } = config
+
   const opt = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -36,7 +28,7 @@ module.exports = config => {
 
   let mongoServer
 
-  const connect = async (env) => {
+  const connect = async () => {
     console.log('connect')
     if (db) {
       return db
@@ -44,14 +36,11 @@ module.exports = config => {
     console.log('db initial', db)
     try {
       if (env === 'test') {
-        console.log('1')
-        const { MongoMemoryServer } = require('mongodb-memory-server')
-        mongoServer = await MongoMemoryServer.create(); 
-        const mongoUri = mongoServer.getUri();
+        mongoServer = new MongoMemoryServer()
+        const mongoUri = await mongoServer.getUri()
         db = await mongoose.connect(mongoUri, opt)
         return db
       }
-      console.log('2')
       db = await mongoose.connect(uri, opt)
     } catch (error) {
       const errorMenssage = {
