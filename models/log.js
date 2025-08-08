@@ -10,13 +10,19 @@ const LogSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    assesor: {
-      type: String
+    contact: {
+      type: Schema.Types.ObjectId,
+      ref: 'Contact'
+    },
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
+    },
+    connection: {
+      type: Schema.Types.ObjectId,
+      ref: 'Connection'
     },
     content: {
-      type: String
-    },
-    subType: {
       type: String
     },
     reference: {
@@ -25,19 +31,18 @@ const LogSchema = new Schema(
     model: {
       type: String,
       enum: [
-        'Llamada',
-        'Correo',
-        'WhatsApp',
-        'Recibo',
-        'Progreso',
-        'Usuario',
-        'Venta',
-        'Acuerdo',
-        'Categoria',
-        'Curso',
-        'Voucher',
-        'Plantilla',
-        'Orden'
+        'Bot',
+        'Chat',
+        'Company',
+        'Connection',
+        'Contact',
+        'Embedding',
+        'Message',
+        'Queue',
+        'Tag',
+        'Team',
+        'Upload',
+        'User'
       ]
     }
   },
