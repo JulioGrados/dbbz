@@ -36,7 +36,7 @@ const ConnectionSchema = new Schema(
     },
     status: {
       type: String,
-      default: 'notAuthorized'
+      default: 'NonStatus'
     },
     greetingMsg: {
       type: String
