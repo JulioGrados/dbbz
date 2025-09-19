@@ -96,6 +96,10 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true
     },
+    notSeeContact: {
+      type: Boolean,
+      default: false
+    },
     isSend: {
       type: Boolean,
       default: false
