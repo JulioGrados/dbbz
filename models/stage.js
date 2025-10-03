@@ -8,25 +8,29 @@ const mongooseBeautifulUniqueValidation = require('mongoose-beautiful-unique-val
 const StageSchema = new Schema(
   {
     name: {
-        type: String
+      type: String
     },
     order: {
-        type: Number
+      type: Number
     },
     description: {
-        type: String
+      type: String
     },
     date: {
-        type: Date,
-        default: Date.now
+      type: Date,
+      default: Date.now
     },
     pipeline: {
-        type: Schema.Types.ObjectId,
-        ref: 'Pipeline'
+      type: Schema.Types.ObjectId,
+      ref: 'Pipeline'
     },
     chat: {
-        type: Schema.Types.ObjectId,
-        ref: 'Chat'
+      type: Schema.Types.ObjectId,
+      ref: 'Chat'
+    },
+    company: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
     },
   },
   {
