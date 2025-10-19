@@ -8,21 +8,25 @@ const mongooseBeautifulUniqueValidation = require('mongoose-beautiful-unique-val
 const PipelineSchema = new Schema(
   {
     name: {
-        type: String
+      type: String
     },
     order: {
-        type: Number
+      type: Number
     },
     description: {
-        type: String
+      type: String
     },
     date: {
-        type: Date,
-        default: Date.now
+      type: Date,
+      default: Date.now
     },
     company: {
-        type: Schema.Types.ObjectId,
-        ref: 'Company'
+      type: Schema.Types.ObjectId,
+      ref: 'Company'
+    },
+    isMain: {
+      type: Boolean,
+      default: false
     },
   },
   {
