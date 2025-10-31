@@ -119,7 +119,15 @@ const ChatSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Tag'
       }
-    ]
+    ],
+    pipeline: {
+      type: Schema.Types.ObjectId,
+      ref: 'Pipeline'
+    },
+    stage: {
+      type: Schema.Types.ObjectId,
+      ref: 'Stage'
+    },
   },
   {
     collection: 'chats'
