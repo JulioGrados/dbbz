@@ -65,6 +65,10 @@ const ChatSchema = new Schema(
       type: Date,
       default: Date.now
     },
+    datePipeline: {
+      type: Date,
+      default: Date.now
+    },
     create: {
       type: Date,
       default: Date.now
