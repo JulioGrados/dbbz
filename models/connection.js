@@ -65,6 +65,39 @@ const ConnectionSchema = new Schema(
     tokenMeta: {
       type: String
     },
+
+    // ==================== CAMPOS WAHA ====================
+
+    // Identificador de sesión en WAHA
+    sessionName: {
+      type: String,
+      sparse: true  // Permite nulls, solo índice si tiene valor
+    },
+
+    // API Key de WAHA (puede ser por empresa o global)
+    wahaApiKey: {
+      type: String
+    },
+
+    // URL del servidor WAHA
+    wahaBaseUrl: {
+      type: String,
+      default: 'https://appbizeus-waha-prod.m1imp2.easypanel.host'
+    },
+
+    // Webhook configurado en WAHA (para validación)
+    wahaWebhookUrl: {
+      type: String
+    },
+
+    // Metadata de la sesión WAHA
+    wahaMeta: {
+      engine: String,        // 'NOWEB', 'WEBJS', etc.
+      phoneNumber: String,   // Número autenticado
+      platform: String,      // 'android', 'iphone', etc.
+      pushName: String,      // Nombre de perfil
+      wid: String            // WhatsApp ID
+    }
   },
   {
     collection: 'connections'
@@ -81,5 +114,9 @@ ConnectionSchema.plugin(mongooseBeautifulUniqueValidation)
 ConnectionSchema.index({
   name: 1
 })
+
+// Índices para WAHA
+ConnectionSchema.index({ company: 1, sessionName: 1 })
+ConnectionSchema.index({ channel: 1, company: 1 })
 
 module.exports = mongoose.model('Connection', ConnectionSchema)
