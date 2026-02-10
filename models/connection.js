@@ -66,6 +66,14 @@ const ConnectionSchema = new Schema(
       type: String
     },
 
+    // ==================== CAMPOS CLOUD-API ====================
+
+    // WhatsApp Business Account ID (necesario para obtener templates)
+    // Diferente de idInstance (Phone Number ID) que es para enviar mensajes
+    wabaId: {
+      type: String
+    },
+
     // ==================== CAMPOS WAHA ====================
 
     // Identificador de sesión en WAHA
