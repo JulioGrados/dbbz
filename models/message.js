@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template']
     },
     contacts: [
       {
@@ -152,6 +152,12 @@ const MessageSchema = new Schema(
     },
     reaction: {
       type: String
+    },
+    // Datos del template HSM enviado
+    templateData: {
+      name: { type: String },
+      language: { type: String },
+      components: { type: Schema.Types.Mixed }
     }
   },
   {
