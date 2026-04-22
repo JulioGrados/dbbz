@@ -45,9 +45,9 @@ const CompanySchema = new Schema(
         ref: 'Connection'
       }
     ],
-    subscribed: {
-      type: Boolean,
-      default: false
+    subscription: {
+      type: Schema.Types.ObjectId,
+      ref: 'Subscription'
     } 
   },
   {
