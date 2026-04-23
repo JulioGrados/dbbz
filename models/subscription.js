@@ -60,7 +60,7 @@ const SubscriptionSchema = new Schema(
     }
   },
   {
-    collection: 'stages'
+    collection: 'subscriptions'
   }
 )
 
