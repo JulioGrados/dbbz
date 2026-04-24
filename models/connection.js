@@ -105,6 +105,10 @@ const ConnectionSchema = new Schema(
       platform: String,      // 'android', 'iphone', etc.
       pushName: String,      // Nombre de perfil
       wid: String            // WhatsApp ID
+    },
+    active: {
+      type: Boolean,
+      default: true
     }
   },
   {
