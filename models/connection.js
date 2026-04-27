@@ -109,6 +109,13 @@ const ConnectionSchema = new Schema(
     active: {
       type: Boolean,
       default: true
+    },
+    pausedReason: {
+      type: String
+    },
+    pausedAt: {
+      type: Date,
+      default: Date.now
     }
   },
   {

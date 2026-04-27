@@ -17,7 +17,7 @@ const SubscriptionSchema = new Schema(
     trialEndDate: {
         type: Date
     },
-    inOnTrial: {
+    isOnTrial: {
         type: Boolean,
         default: true
     },
