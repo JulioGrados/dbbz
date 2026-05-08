@@ -57,6 +57,51 @@ const SubscriptionSchema = new Schema(
     },
     currentPeriodEnd: {
         type: Date
+    },
+    billingInfo: {
+        firstName: {
+            type: String
+        },
+        lastName: {
+            type: String
+        },
+        email: {
+            type: String
+        },
+        phone: {
+            type: String
+        },
+        company: {
+            type: String
+        },
+        country: {
+            type: String
+        },
+        address: {
+            type: String
+        },
+        city: {
+            type: String
+        },
+        taxId: {
+            type: String
+        }
+    },
+    interval: {
+        type: String,
+        enum: ['monthly', 'annual'],
+        default: 'monthly'
+    },
+    stripeCheckoutSessionId: {
+        type: String
+    },
+    connectionsLimit: {
+        type: Number,
+        default: 1
+    },
+    usersLimit: {
+        type: Number,
+        default: 3
     }
   },
   {
