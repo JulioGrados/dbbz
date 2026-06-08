@@ -59,22 +59,13 @@ const SubscriptionSchema = new Schema(
         type: Date
     },
     billingInfo: {
-        firstName: {
+        invoiceName: {
             type: String
         },
-        lastName: {
+        documentNumber: {
             type: String
         },
-        email: {
-            type: String
-        },
-        phone: {
-            type: String
-        },
-        company: {
-            type: String
-        },
-        country: {
+        zipCode: {
             type: String
         },
         address: {
@@ -83,7 +74,10 @@ const SubscriptionSchema = new Schema(
         city: {
             type: String
         },
-        taxId: {
+        country: {
+            type: String
+        },
+        email: {
             type: String
         }
     },
