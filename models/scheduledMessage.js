@@ -43,8 +43,7 @@ const ScheduledMessageSchema = new Schema(
       required: true
     },
     sentAt: {
-      type: Date,
-      required: true
+      type: Date
     },
     status: {
       type: String,
