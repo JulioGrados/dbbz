@@ -132,6 +132,25 @@ const ChatSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Stage'
     },
+    isCtwa: {
+      type: Boolean,
+      default: false
+    },
+    ctwaClid: {
+      type: String
+    },
+    referral: {
+      source_url: { type: String },
+      source_id: { type: String },
+      source_type: { type: String },
+      headline: { type: String },
+      body: { type: String },
+      media_type: { type: String },
+      image_url: { type: String },
+      video_url: { type: String },
+      thumbnail_url: { type: String },
+      ctwa_clid: { type: String }
+    },
   },
   {
     collection: 'chats'

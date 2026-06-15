@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template', 'request_welcome']
     },
     contacts: [
       {
@@ -152,6 +152,18 @@ const MessageSchema = new Schema(
     },
     reaction: {
       type: String
+    },
+    referral: {
+      source_url: { type: String },
+      source_id: { type: String },
+      source_type: { type: String },
+      headline: { type: String },
+      body: { type: String },
+      media_type: { type: String },
+      image_url: { type: String },
+      video_url: { type: String },
+      thumbnail_url: { type: String },
+      ctwa_clid: { type: String },
     },
     // Datos del template HSM enviado
     templateData: {
