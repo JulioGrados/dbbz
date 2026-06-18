@@ -66,6 +66,23 @@ const ConnectionSchema = new Schema(
       type: String
     },
 
+    // ==================== CAMPOS TIKTOK (Business Messaging) ====================
+    tiktokBusinessId: {
+      type: String // open_id = business_id para los endpoints de mensaje
+    },
+    tiktokAccountName: {
+      type: String
+    },
+    tiktokAccessToken: {
+      type: String // access_token (24h)
+    },
+    tiktokRefreshToken: {
+      type: String // refresh_token (1 año)
+    },
+    tiktokTokenExpiry: {
+      type: Date // refresh perezoso
+    },
+
     // ==================== CAMPOS CLOUD-API ====================
 
     // WhatsApp Business Account ID (necesario para obtener templates)
@@ -106,6 +123,7 @@ const ConnectionSchema = new Schema(
       pushName: String,      // Nombre de perfil
       wid: String            // WhatsApp ID
     },
+
     active: {
       type: Boolean,
       default: true
