@@ -1,9 +1,15 @@
 'use strict'
 
+const crypto = require('crypto')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const timestamps = require('mongoose-timestamp')
 const mongooseBeautifulUniqueValidation = require('mongoose-beautiful-unique-validation')
+
+// Token público dedicado para autenticar la API de envío externa
+// (NO reutilizar `key`/`tokenMeta`/credenciales de plataforma — ver docs/api-publica-envio-canales.md)
+// Formato: "bz_" + 48 hex chars => "bz_3f9a...". URL-safe y reconocible.
+const generateApiToken = () => `bz_${crypto.randomBytes(24).toString('hex')}`
 
 const ConnectionSchema = new Schema(
   {
@@ -21,6 +27,13 @@ const ConnectionSchema = new Schema(
     },
     key: {
       type: String
+    },
+    apiToken: {
+      type: String,
+      unique: true,
+      sparse: true,
+      index: true,
+      default: generateApiToken
     },
     company: {
       type: Schema.Types.ObjectId,
@@ -156,4 +169,9 @@ ConnectionSchema.index({
 ConnectionSchema.index({ company: 1, sessionName: 1 })
 ConnectionSchema.index({ channel: 1, company: 1 })
 
-module.exports = mongoose.model('Connection', ConnectionSchema)
+const ConnectionModel = mongoose.model('Connection', ConnectionSchema)
+
+// Reutilizable para backfill/regeneración manteniendo el mismo formato
+ConnectionModel.generateApiToken = generateApiToken
+
+module.exports = ConnectionModel
