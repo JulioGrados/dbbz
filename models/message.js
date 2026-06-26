@@ -153,6 +153,11 @@ const MessageSchema = new Schema(
     reaction: {
       type: String
     },
+    // Reacción puesta por el agente (saliente). Se mantiene separada de `reaction`
+    // (reacción del contacto, entrante) para no pisar una con otra.
+    myReaction: {
+      type: String
+    },
     referral: {
       source_url: { type: String },
       source_id: { type: String },
