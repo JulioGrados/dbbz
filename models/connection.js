@@ -147,7 +147,29 @@ const ConnectionSchema = new Schema(
     pausedAt: {
       type: Date,
       default: Date.now
-    }
+    },
+
+    // ==================== CAMPOS ZADARMA ====================
+    zadarmakey: {
+      type: String
+    },
+    zadarmaSecret: {
+      type: String
+    },
+    zadarmaWebhookSet: {
+      type: Boolean,
+      default: false
+    },
+    zadarmaDefaultDid: {
+      type: String
+    },
+    // Mapeo extensión SIP ↔ agente Bizeus (para atribuir la llamada al usuario correcto)
+    zadarmaExtensions: [
+      {
+        sip: { type: String },
+        user: { type: Schema.Types.ObjectId, ref: 'User' }
+      }
+    ]
   },
   {
     collection: 'connections'

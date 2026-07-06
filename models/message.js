@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template', 'request_welcome']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template', 'request_welcome', 'call']
     },
     contacts: [
       {
@@ -175,6 +175,18 @@ const MessageSchema = new Schema(
       name: { type: String },
       language: { type: String },
       components: { type: Schema.Types.Mixed }
+    },
+    call: {
+      direction: { type: String, enum: ['inbound', 'outbound', 'internal'] },
+      status: { type: String },
+      duration: { type: Number },
+      from: { type: String },
+      to: { type: String },
+      pbxCallId: { type: String, index: true },
+      sip: { type: String },
+      agent: { type: Schema.Types.ObjectId, ref: 'User' },
+      recordingUrl: { type: String },
+      startAt: { type: Date }
     }
   },
   {
