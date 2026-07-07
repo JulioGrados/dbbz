@@ -150,7 +150,7 @@ const ConnectionSchema = new Schema(
     },
 
     // ==================== CAMPOS ZADARMA ====================
-    zadarmakey: {
+    zadarmaKey: {
       type: String
     },
     zadarmaSecret: {
