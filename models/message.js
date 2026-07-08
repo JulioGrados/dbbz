@@ -185,6 +185,7 @@ const MessageSchema = new Schema(
       pbxCallId: { type: String, index: true },
       sip: { type: String },
       agent: { type: Schema.Types.ObjectId, ref: 'User' },
+      agentName: { type: String }, // nombre del agente atribuido (denormalizado para la burbuja)
       recordingUrl: { type: String },
       startAt: { type: Date }
     }
