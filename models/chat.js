@@ -167,4 +167,10 @@ ChatSchema.index({
   status: 1
 })
 
+// Bandeja: /api/chats/filter (match por company+option, orden por updatedAt)
+ChatSchema.index(
+  { company: 1, option: 1, updatedAt: -1 },
+  { name: 'company_option_updatedAt' }
+)
+
 module.exports = mongoose.model('Chat', ChatSchema)

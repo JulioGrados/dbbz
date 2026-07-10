@@ -205,4 +205,14 @@ MessageSchema.index({
   status: 1
 })
 
+// Lookup de ACKs de WhatsApp (wahaWorker busca por wamid/senderId)
+MessageSchema.index({ wamid: 1 })
+MessageSchema.index({ senderId: 1 })
+
+// Propagación de status a mensajes anteriores del chat
+MessageSchema.index(
+  { chat: 1, transmitter: 1, status: 1, createdAt: -1 },
+  { name: 'chat_transmitter_status_createdAt' }
+)
+
 module.exports = mongoose.model('Message', MessageSchema)
