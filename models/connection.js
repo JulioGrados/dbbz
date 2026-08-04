@@ -96,6 +96,20 @@ const ConnectionSchema = new Schema(
       type: Date // refresh perezoso
     },
 
+    // ==================== CAMPOS TELEGRAM (Bot API) ====================
+    telegramBotToken: {
+      type: String // token de BotFather
+    },
+    telegramBotUsername: {
+      type: String // p.ej. 'miempresa_bot' (de getMe)
+    },
+    telegramBotId: {
+      type: String // id numérico del bot (de getMe) — un bot = una conexión (cross-tenant)
+    },
+    telegramWebhookSecret: {
+      type: String // secret_token generado por Bizeus al hacer setWebhook; Telegram lo devuelve en X-Telegram-Bot-Api-Secret-Token
+    },
+
     // ==================== CAMPOS CLOUD-API ====================
 
     // WhatsApp Business Account ID (necesario para obtener templates)
@@ -169,7 +183,20 @@ const ConnectionSchema = new Schema(
         sip: { type: String },
         user: { type: Schema.Types.ObjectId, ref: 'User' }
       }
-    ]
+    ],
+    // ==================== CAMPOS TELEGRAM ====================
+    telegramBotToken: {
+      type: String
+    },
+    telegramBotUsername: {
+      type: String
+    },
+    telegramBotId: {
+      type: String
+    },
+    telegramWebhookSecret: {
+      type: String
+    },
   },
   {
     collection: 'connections'
