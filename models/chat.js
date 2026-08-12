@@ -23,6 +23,20 @@ const ChatSchema = new Schema(
     mobileCode: {
       type: String
     },
+    // ── Identidad WhatsApp 2026 (mismos campos que Contact) ──────────────────
+    // `mobile` sigue siendo el destinatario por defecto. Cuando WhatsApp no
+    // entrega el teléfono, `mobile` guarda el identificador disponible y estos
+    // campos dicen de qué tipo es, para enviar al destino correcto y para poder
+    // fusionar el chat cuando aparezca el número real.
+    lid: {
+      type: String // Solo dígitos, sin el sufijo @lid
+    },
+    waUserId: {
+      type: String // BSUID de Cloud API
+    },
+    waUsername: {
+      type: String // Username público de WhatsApp, sin @
+    },
     lastMessage: {
       type: String
     },
@@ -171,6 +185,17 @@ ChatSchema.index({
 ChatSchema.index(
   { company: 1, option: 1, updatedAt: -1 },
   { name: 'company_option_updatedAt' }
+)
+
+// Búsqueda por identificadores alternos de WhatsApp (ver campos lid/waUserId).
+ChatSchema.index(
+  { company: 1, lid: 1 },
+  { name: 'company_lid', partialFilterExpression: { lid: { $exists: true } } }
+)
+
+ChatSchema.index(
+  { company: 1, waUserId: 1 },
+  { name: 'company_waUserId', partialFilterExpression: { waUserId: { $exists: true } } }
 )
 
 module.exports = mongoose.model('Chat', ChatSchema)

@@ -25,6 +25,22 @@ const ContactSchema = new Schema(
       default: 51,
       type: Number
     },
+    // ── Identidad WhatsApp 2026 ──────────────────────────────────────────────
+    // WhatsApp dejó de garantizar el teléfono como identificador único:
+    //  · WAHA/NOWEB entrega @lid (identificador oculto) cuando el número no está
+    //    en la agenda del teléfono ni comparten grupo.
+    //  · Cloud API entrega BSUID (user_id) siempre, y omite wa_id/from si el
+    //    usuario activó username y no hubo interacción en los últimos 30 días.
+    // Guardarlos permite reconocer al mismo contacto aunque falte `mobile`.
+    lid: {
+      type: String // Solo dígitos, sin el sufijo @lid (ej. '234175038754968')
+    },
+    waUserId: {
+      type: String // BSUID de Cloud API (ej. 'PE.13491208655302741918')
+    },
+    waUsername: {
+      type: String // Username público de WhatsApp, sin @
+    },
     firstName: {
       type: String
     },
@@ -101,5 +117,25 @@ ContactSchema.index({
   email: 1,
   names: 1
 })
+
+// Búsqueda del contacto por teléfono dentro de la empresa: es la consulta que
+// hace CADA mensaje entrante de todos los canales.
+ContactSchema.index(
+  { company: 1, mobile: 1 },
+  { name: 'company_mobile' }
+)
+
+// Búsqueda por identificadores alternos de WhatsApp (ver campos lid/waUserId).
+// Parciales: solo indexan los documentos que sí tienen el identificador, así no
+// crecen con los millones de contactos que solo tienen teléfono.
+ContactSchema.index(
+  { company: 1, lid: 1 },
+  { name: 'company_lid', partialFilterExpression: { lid: { $exists: true } } }
+)
+
+ContactSchema.index(
+  { company: 1, waUserId: 1 },
+  { name: 'company_waUserId', partialFilterExpression: { waUserId: { $exists: true } } }
+)
 
 module.exports = mongoose.model('Contact', ContactSchema)
