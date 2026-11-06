@@ -23,7 +23,7 @@ const MessageSchema = new Schema(
     },
     typeMsg: {
       type: String,
-      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template', 'request_welcome', 'call', 'unsupported']
+      enum: ['text', 'image', 'video', 'document', 'extendedText', 'quoted', 'audio', 'note', 'contact', 'contactsArray', 'sticker', 'location', 'template', 'request_welcome', 'call', 'unsupported', 'poll']
     },
     contacts: [
       {
@@ -188,6 +188,16 @@ const MessageSchema = new Schema(
       agentName: { type: String }, // nombre del agente atribuido (denormalizado para la burbuja)
       recordingUrl: { type: String },
       startAt: { type: Date }
+    },
+    // Encuesta de elección única (WAHA sendPoll). El voto del cliente llega por
+    // el evento poll.vote y se guarda como un mensaje entrante que cita la encuesta.
+    poll: {
+      name: { type: String },           // pregunta
+      options: [{ type: String }],
+      sentTo: { type: String },         // chatId de WAHA al que se envió (@c.us / @lid)
+      selected: { type: String },       // última opción elegida por el cliente
+      votedAt: { type: Date },
+      voteTimestamp: { type: Number }   // timestamp del último voto aplicado (descarta eventos viejos)
     }
   },
   {
