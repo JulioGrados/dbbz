@@ -67,6 +67,30 @@ const UserSchema = new Schema(
     tokenRecover: {
       type: String
     },
+    // Restablecimiento de contraseña por enlace de un solo uso (lo genera el
+    // admin de la empresa o el staff de Bizeus). Se guarda SOLO el hash
+    // SHA-256 del token: una fuga de la base no deja enlaces utilizables.
+    resetTokenHash: {
+      type: String,
+      index: { sparse: true }
+    },
+    resetTokenExpires: {
+      type: Date
+    },
+    resetIssuedBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    resetIssuedAt: {
+      type: Date
+    },
+    // Versión de la contraseña. Va dentro del JWT (`passwordVersion`) y
+    // authHandler/socket la comparan con la base: al restablecer la
+    // contraseña sube y todas las sesiones anteriores dejan de valer.
+    passwordVersion: {
+      type: Number,
+      default: 0
+    },
     rol: {
       type: String,
       enum: [
