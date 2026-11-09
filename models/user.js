@@ -24,6 +24,14 @@ const UserSchema = new Schema(
       required: [true, 'Debes agregar un email.'],
       sparse: true
     },
+    // Registro: cuándo confirmó su correo con el código y aceptó los términos.
+    // Las cuentas anteriores a la verificación no lo tienen.
+    emailVerifiedAt: {
+      type: Date
+    },
+    termsAcceptedAt: {
+      type: Date
+    },
     mobile: {
       type: String,
       // unique: 'Ya existe una cuenta que tiene el mismo número de celular.',
